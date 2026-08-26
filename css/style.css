@@ -263,8 +263,24 @@ header.scrolled {
 .brand .logo {
     height: 44px;
     width: auto;
-    border-radius: 4px;
-    box-shadow: 0 0 18px rgba(212, 175, 55, .25)
+    border-radius: 3px;
+    filter: drop-shadow(0 0 12px rgba(212, 175, 55, .22));
+    transition: transform .35s var(--ease), filter .35s var(--ease)
+}
+
+.brand:hover .logo {
+    transform: translateY(-1px) scale(1.03);
+    filter: drop-shadow(0 0 17px rgba(212, 175, 55, .38))
+}
+
+/* The original wordmark is white for the dark theme. In light mode,
+   turn only its artwork into a deep charcoal so the same logo remains readable. */
+html[data-theme="light"] .brand .logo {
+    filter: brightness(0) saturate(100%) opacity(.82) drop-shadow(0 0 10px rgba(168, 137, 42, .18))
+}
+
+html[data-theme="light"] .brand:hover .logo {
+    filter: brightness(0) saturate(100%) opacity(.9) drop-shadow(0 0 15px rgba(168, 137, 42, .28))
 }
 
 .brand-name {
